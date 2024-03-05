@@ -1,5 +1,7 @@
+import { RecordForm } from "./components/RecordForm/RecordForm"
+
 export default function Home():React.ReactNode {
   return (
-    <h1>Hello</h1>
+    <RecordForm/>
   )
 }

@@ -1,10 +1,12 @@
 import { configureStore, type EnhancedStore } from "@reduxjs/toolkit"
 import recordsReducer from './features/records'
+import formReducer from './features/form'
 
 export const makeStore = (): EnhancedStore => {
   return configureStore({
     reducer: {
-      records: recordsReducer
+      records: recordsReducer,
+      form: formReducer
     }
   })
 }

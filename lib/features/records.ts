@@ -1,10 +1,8 @@
-import { createSlice, type PayloadAction, type Dispatch } from "@reduxjs/toolkit"
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "../store"
-import type { ConnectedActions } from "../hooks"
 
 const initialState: InitialState = {
   records: [], 
-  filteredRecords: [],
   filterTerm: 'all', 
   completedRecords: 0,
   uncompletedRecords: 0
@@ -21,11 +19,6 @@ export const recordsSlice = createSlice({
       })
       state.uncompletedRecords++
     },
-    filterRecords: (state) => {
-      state.filteredRecords = state.filterTerm === 'all' ? 
-        state.records : 
-        state.records.filter((record :Record) => state.filterTerm === 'completed' ? record.isComplete : !record.isComplete)
-    },
     changeFilterTerm: (state, action: PayloadAction<FilterTerm>) => {
       state.filterTerm = action.payload
     },
@@ -41,15 +34,12 @@ export const recordsSlice = createSlice({
   }
 })
 
-export const selectFilteredRecords = (state: RootState): Record[] => state.records.filteredRecords
-export const {addRecord, filterRecords, changeFilterTerm, updateCountOfRecordsStatus} = recordsSlice.actions
-
-export const addAndFilterRecords = (payload: string): ConnectedActions => {
-  return (dispatch: Dispatch) => {
-    dispatch(addRecord(payload))
-    dispatch(filterRecords())
-  }
+export const selectFilteredRecords = (state: RootState): Record[] => {
+  return state.records.filterTerm === 'all' ?
+    state.records.records :
+    state.records.records.filter((record :Record) => state.records.filterTerm === 'completed' ? record.isComplete : !record.isComplete)
 }
+export const {addRecord, changeFilterTerm, updateCountOfRecordsStatus} = recordsSlice.actions
 export default recordsSlice.reducer
 
 export type Record = {
@@ -61,7 +51,6 @@ export type FilterTerm = 'all' | 'completed' | 'uncompleted'
 
 export type InitialState = {
   records: Record[]
-  filteredRecords: Record[]
   filterTerm: FilterTerm
   completedRecords: number
   uncompletedRecords: number
