@@ -1,6 +1,7 @@
 {
   "extends": [
     "@wemake-services/typescript/recommended",
+    "plugin:import/recommended",
     "next"
   ]
 }
