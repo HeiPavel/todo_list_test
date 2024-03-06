@@ -1,5 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "../store"
+import { addRecord, type AddRecordPayloadType } from "./records"
+import type { ConnectedActions } from "../hooks"
 
 type InitialState = {
   term: string
@@ -15,10 +17,20 @@ export const formSlice = createSlice({
   reducers: {
     changeTerm: (state, action: PayloadAction<string>) => {
       state.term = action.payload
+    },
+    clearTerm: (state) => {
+      state.term = ''
     }
   }
 })
 
 export const selectTerm = (state: RootState): string => state.form.term
-export const {changeTerm} = formSlice.actions
+export const {changeTerm, clearTerm} = formSlice.actions
+export const addRecordAndClearTerm = (payload: AddRecordPayloadType): ConnectedActions => {
+  return dispatch => {
+    dispatch(clearTerm())
+    dispatch(addRecord(payload))
+  }
+}
+
 export default formSlice.reducer

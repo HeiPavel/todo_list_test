@@ -3,5 +3,8 @@
     "@wemake-services/typescript/recommended",
     "plugin:import/recommended",
     "next"
-  ]
+  ],
+  "rules": {       
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 }

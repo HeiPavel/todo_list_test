@@ -12,9 +12,9 @@ export const recordsSlice = createSlice({
   name: 'records',
   initialState: initialState,
   reducers: {
-    addRecord: (state, action: PayloadAction<string>) => {
+    addRecord: (state, action: PayloadAction<AddRecordPayloadType>) => {
       state.records.push({
-        content: action.payload,
+        ...action.payload,
         isComplete: false
       })
       state.uncompletedRecords++
@@ -43,11 +43,17 @@ export const {addRecord, changeFilterTerm, updateCountOfRecordsStatus} = records
 export default recordsSlice.reducer
 
 export type Record = {
+  id: string
   content: string
   isComplete: boolean
 }
 
-export type FilterTerm = 'all' | 'completed' | 'uncompleted'
+export type AddRecordPayloadType = {
+  id: string
+  content: string
+}
+
+export type FilterTerm = 'all' | 'completed' | 'current'
 
 export type InitialState = {
   records: Record[]
