@@ -1,0 +1,9 @@
+.records_container {
+    padding-bottom: 50px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    .records_list {
+        width: 40%;
+    }
+}

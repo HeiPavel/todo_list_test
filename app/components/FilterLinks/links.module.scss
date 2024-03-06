@@ -1,0 +1,16 @@
+.nav {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: rgb(31, 2, 15);
+  }
+  .active {
+    text-decoration: underline;
+  }
+}

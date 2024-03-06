@@ -3,7 +3,6 @@ import type { RootState } from "../store"
 
 const initialState: InitialState = {
   records: [], 
-  filterTerm: 'all', 
   completedRecords: 0,
   uncompletedRecords: 0
 }
@@ -19,9 +18,6 @@ export const recordsSlice = createSlice({
       })
       state.uncompletedRecords++
     },
-    changeFilterTerm: (state, action: PayloadAction<FilterTerm>) => {
-      state.filterTerm = action.payload
-    },
     updateCountOfRecordsStatus: (state, action: PayloadAction<boolean>) => {
       if (action.payload) {
         state.completedRecords++
@@ -34,12 +30,8 @@ export const recordsSlice = createSlice({
   }
 })
 
-export const selectFilteredRecords = (state: RootState): Record[] => {
-  return state.records.filterTerm === 'all' ?
-    state.records.records :
-    state.records.records.filter((record :Record) => state.records.filterTerm === 'completed' ? record.isComplete : !record.isComplete)
-}
-export const {addRecord, changeFilterTerm, updateCountOfRecordsStatus} = recordsSlice.actions
+export const selectRecords = (state: RootState): Record[] => state.records.records
+export const {addRecord, updateCountOfRecordsStatus} = recordsSlice.actions
 export default recordsSlice.reducer
 
 export type Record = {
@@ -53,11 +45,8 @@ export type AddRecordPayloadType = {
   content: string
 }
 
-export type FilterTerm = 'all' | 'completed' | 'current'
-
 export type InitialState = {
   records: Record[]
-  filterTerm: FilterTerm
   completedRecords: number
   uncompletedRecords: number
 }
