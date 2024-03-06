@@ -3,14 +3,10 @@
     display: flex;
     justify-content: center;
     .records_list {
+        flex: 0 1 575px;
         padding: 1rem 0.5rem;
         max-height: 400px;
         overflow-y: auto;
-        display: flex;
-        justify-content: center;
-        align-content: flex-start;
-        flex-wrap: wrap;
-        width: 30%;
         background-color: rgb(249 250 251);
     }
 }

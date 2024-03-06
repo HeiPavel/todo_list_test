@@ -1,11 +1,13 @@
 .form {
-  margin: 0 auto;
   height: 150px;
-  width: 300px;
-  display: flex;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: 300px auto 300px;
+  grid-template-areas: ". form stats";
   .label_container {
-    flex-grow: 1;
+    grid-area: form;
+    width: 400px;
+    justify-self: center;
+    align-self: end;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;

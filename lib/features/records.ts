@@ -37,6 +37,12 @@ export const recordsSlice = createSlice({
   } 
 })
 
+export const selectStats = (state: RootState): StatsType => {
+  return {
+    completed: state.records.completedRecords,
+    uncompleted: state.records.uncompletedRecords
+  }
+}
 export const selectRecords = (state: RootState): Record[] => state.records.records
 export const {addRecord, changeStatus, removeRecord} = recordsSlice.actions
 export default recordsSlice.reducer
@@ -56,4 +62,9 @@ export type InitialState = {
   records: Record[]
   completedRecords: number
   uncompletedRecords: number
+}
+
+export type StatsType = {
+  completed: number
+  uncompleted: number
 }

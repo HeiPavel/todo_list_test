@@ -1,0 +1,28 @@
+.table {
+  grid-area: stats;
+  width: 200px;
+  align-self: center;
+  border-collapse: collapse;
+  border: 1px solid rgb(47, 111, 235);
+  thead {
+    height: 2rem;
+    background-color: rgb(47, 111, 235);
+    color: white;
+  }
+  tbody {
+    th:first-child, td:first-child {
+      border-right: 1px solid rgb(47, 111, 235);
+    }
+    th {
+      border-bottom: 1px solid rgb(47, 111, 235);
+      text-align: center;
+      height: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+    td {
+      text-align: center;
+      font-size: 3rem;
+    }
+  }
+}

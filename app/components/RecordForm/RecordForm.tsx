@@ -3,6 +3,7 @@
 import styles from "./form.module.scss"
 import { useAppSelector, useAppDispatch } from "@/lib/hooks"
 import { changeTerm, selectTerm, addRecordAndClearTerm } from "@/lib/features/form"
+import { Stats } from "../Stats/Stats"
 import {v4 as uuidv4} from 'uuid'
 
 export const RecordForm = (): React.ReactNode => {
@@ -35,6 +36,7 @@ export const RecordForm = (): React.ReactNode => {
           <span className={`${styles.length} ${term.length === 20 ? styles.max_length : ''}`}>{term.length}/20</span>
         </div>
       </div>
+      <Stats/>
     </div>
   )
 }
