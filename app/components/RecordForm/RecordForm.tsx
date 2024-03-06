@@ -14,7 +14,7 @@ export const RecordForm = (): React.ReactNode => {
   }
 
   return (
-    <form className={styles.form}>
+    <div className={styles.form}>
       <div className={styles.label_container}>
         <label htmlFor="record">Create record:</label>
         <div className={styles.input_container}>
@@ -35,6 +35,6 @@ export const RecordForm = (): React.ReactNode => {
           <span className={`${styles.length} ${term.length === 20 ? styles.max_length : ''}`}>{term.length}/20</span>
         </div>
       </div>
-    </form>
+    </div>
   )
 }

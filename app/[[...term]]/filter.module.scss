@@ -1,9 +1,16 @@
 .records_container {
-    padding-bottom: 50px;
     flex-grow: 1;
     display: flex;
     justify-content: center;
     .records_list {
-        width: 40%;
+        padding: 1rem 0.5rem;
+        max-height: 400px;
+        overflow-y: auto;
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        width: 30%;
+        background-color: rgb(249 250 251);
     }
 }

@@ -18,20 +18,27 @@ export const recordsSlice = createSlice({
       })
       state.uncompletedRecords++
     },
-    updateCountOfRecordsStatus: (state, action: PayloadAction<boolean>) => {
-      if (action.payload) {
+    changeStatus: (state, action: PayloadAction<string>) => {
+      const record = state.records.find(rec => rec.id === action.payload)
+      if (record?.isComplete !== undefined) record.isComplete = !record.isComplete
+      if (record?.isComplete) {
         state.completedRecords++
         state.uncompletedRecords--
       } else {
         state.completedRecords--
         state.uncompletedRecords++
       }
+    },
+    removeRecord: (state, action: PayloadAction<string>) => {
+      const index = state.records.findIndex(rec => rec.id === action.payload)
+      state.records[index].isComplete ? state.completedRecords-- : state.uncompletedRecords--
+      state.records.splice(index, 1)
     }
-  }
+  } 
 })
 
 export const selectRecords = (state: RootState): Record[] => state.records.records
-export const {addRecord, updateCountOfRecordsStatus} = recordsSlice.actions
+export const {addRecord, changeStatus, removeRecord} = recordsSlice.actions
 export default recordsSlice.reducer
 
 export type Record = {

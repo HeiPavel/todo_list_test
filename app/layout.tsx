@@ -23,9 +23,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header/>
         <main>
-          <Provider><RecordForm/></Provider>
-          <FilterLinks/>
-          <Provider>{children}</Provider>
+          <Provider>
+            <RecordForm/>
+            <FilterLinks/>
+            {children}
+          </Provider>
         </main>
       </body>
     </html>
