@@ -63,3 +63,42 @@
     cursor: pointer;
   }
 }
+
+@media only screen and (max-width: 1200px) {
+  .form {
+    padding-top: 1rem;
+    height: unset;
+    @include flex(normal, center, column-reverse);
+    gap: 20px;
+    .label_container {
+      align-self: unset;
+      justify-self: unset;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .form {
+    .label_container {
+      width: 450px;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .form {
+    padding-inline: 1rem;
+    .label_container {
+      width: 100%;
+      label {
+        font-size: 1.2rem;
+        padding-bottom: 0.5rem;
+      }
+    }
+    button {
+      font-size: 0.9rem;
+      padding-inline: 0.5rem;
+      cursor: pointer;
+    }
+  }
+}

@@ -2,16 +2,27 @@
 @import '../styles/mixins';
 
 .records_container {
+  position: relative;
   padding-inline: 1rem;
   flex-grow: 1;
   @include flex(center);
   .records_list {
     flex: 0 1 600px;
     padding: 1rem;
-    max-height: 400px;
+    height: 400px;
     overflow-y: auto;
     background: $gray-records-bg-color;
     box-shadow: inset 3px 3px 4px #e2e1e1,
             inset -3px -3px 4px #e2e1e1;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .records_container {
+    padding-inline: 0.3rem;
+    min-height: 500px;
+    .records_list {
+      padding: 1rem 0.4rem;
+    }
   }
 }

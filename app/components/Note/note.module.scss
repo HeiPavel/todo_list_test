@@ -57,10 +57,36 @@
   border-bottom: none;
 }
 
-.note:hover .note_icon svg {
-  color: $main-blue-color;
+@media (hover: hover) {
+  .note:hover .note_icon svg {
+    color: $main-blue-color;
+  }
+  
+  .icon:hover {
+    background-color: $close-icon-hover-bg-color;
+  }
 }
 
-.icon:hover {
-  background-color: $close-icon-hover-bg-color;
+@media only screen and (max-width: 480px) {
+  .note {
+    padding-inline: 0.3rem 0.5rem;
+    gap: 0.7rem;
+    .text {
+      .title_container {
+        font-size: 0.9rem;
+        gap: 0.5rem;
+        .note_icon {
+          @include size(1.7rem, 1.7rem);
+        }
+      }
+      .status {
+        padding: 0.25rem;
+        font-size: 0.7rem;
+      }
+    }
+    .icon {
+      padding: 0.2rem;
+      @include size(1rem, 1rem);
+    }
+  }
 }
