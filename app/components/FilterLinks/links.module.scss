@@ -1,14 +1,17 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
 .nav {
   height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center);
   gap: 70px;
   a {
     text-decoration: none;
     text-transform: uppercase;
+    font-family: $roboto;
     font-size: 0.9rem;
-    color: rgb(31, 2, 15);
+    letter-spacing: 1px;
+    color: $black-color;
   }
   .active {
     text-decoration: underline;

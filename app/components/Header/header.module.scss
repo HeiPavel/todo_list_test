@@ -1,9 +1,13 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
 .header {
   height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center);
+  background-color: $main-blue-color;
+  color: $white-color;
   h1 {
+    font-family: $lustina;
     font-size: 3rem;
   }
 }

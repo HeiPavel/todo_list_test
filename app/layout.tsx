@@ -1,12 +1,24 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Roboto, Lusitana } from "next/font/google"
 import Provider from "./StoreProvider"
 import { Header } from "./components/Header/Header"
 import { RecordForm } from "./components/RecordForm/RecordForm"
 import { FilterLinks } from "./components/FilterLinks/FilterLinks"
-import "./globals.css"
+import "./styles/globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
+const roboto = Roboto({ 
+  subsets: ["latin"],
+  weight: ['300','400','700'],
+  variable: '--roboto',
+  display: 'swap'
+})
+
+const lustina = Lusitana({
+  subsets: ["latin"],
+  weight: ['400','700'],
+  variable: '--lustina',
+  display: 'swap'
+})
 
 export const metadata: Metadata = {
   title: "Todo list",
@@ -20,7 +32,7 @@ export default function RootLayout({
 }>): React.ReactNode {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${roboto.variable} ${lustina.variable}`}>
         <Header/>
         <main>
           <Provider>

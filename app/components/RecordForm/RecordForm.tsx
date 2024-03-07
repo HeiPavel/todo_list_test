@@ -23,13 +23,13 @@ export const RecordForm = (): React.ReactNode => {
             type="text" 
             name="record"
             id="record"
-            placeholder="Record"
+            placeholder="Record..."
             autoComplete="off"
             maxLength={20}
             value={term}
             onChange={(event) => dispatch(changeTerm(event.target.value))}
           />
-          <button type="button" onClick={handleAdd}>Add</button>
+          <button type="button" onClick={handleAdd}>Add Record</button>
         </div>
         <div className={styles.message}>
           <p>Max length 20</p>

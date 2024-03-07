@@ -1,20 +1,24 @@
+@import '../../styles/variables';
+
 .table {
   grid-area: stats;
   width: 200px;
-  align-self: center;
+  align-self: end;
   border-collapse: collapse;
-  border: 1px solid rgb(47, 111, 235);
+  border: 1px solid $main-blue-color;
+  font-family: $roboto;
   thead {
     height: 2rem;
-    background-color: rgb(47, 111, 235);
-    color: white;
+    background-color: $main-blue-color;
+    color: $white-color;
+    font-size: 1.3rem;
   }
   tbody {
     th:first-child, td:first-child {
-      border-right: 1px solid rgb(47, 111, 235);
+      border-right: 1px solid $main-blue-color;
     }
     th {
-      border-bottom: 1px solid rgb(47, 111, 235);
+      border-bottom: 1px solid $main-blue-color;
       text-align: center;
       height: 1.5rem;
       font-size: 0.9rem;

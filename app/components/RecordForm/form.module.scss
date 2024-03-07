@@ -1,39 +1,65 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
 .form {
-  height: 150px;
+  height: 200px;
   display: grid;
   grid-template-columns: 300px auto 300px;
   grid-template-areas: ". form stats";
+  font-family: $roboto;
   .label_container {
     grid-area: form;
-    width: 400px;
+    width: 500px;
     justify-self: center;
     align-self: end;
-    display: flex;
-    flex-direction: column;
+    @include flex(normal, normal, column);
     gap: 0.5rem;
+    label {
+      font-size: 1.5rem;
+      padding-bottom: 1rem;
+    }
   }
   .message {
     width: 200px;
     visibility: hidden;
-    display: flex;
-    justify-content: space-between;
+    @include flex(space-between);
     font-size: 0.8rem;
     font-weight: 300;
     font-style: italic;
+    letter-spacing: 1px;
   }
   .input_container {
     display: flex;
     gap: 15px;
     input[type=text] {
-      height: 20px;
+      box-sizing: border-box;
       flex-grow: 1;
-      outline: none;
+      outline-width: 2px;
+      padding: 9px 0.5rem;
+      border: 1px solid $input-border-color;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+    }
+    input[type=text]:focus {
+      outline: 2px solid $main-blue-color;
+    }
+    input[type=text]::placeholder {
+      font-size: 0.9rem;
     }
   }
   .input_container:has(input[type=text]:focus) + .message {
     visibility: visible;
   }
   .max_length {
-    color: red;
+    color: $red-color;
+  }
+  button {
+    background-color: $main-blue-color;
+    color: $white-color;
+    border: none;
+    border-radius: 0.375rem;
+    line-height: 1.25rem;
+    padding-inline: 1rem;
+    cursor: pointer;
   }
 }
