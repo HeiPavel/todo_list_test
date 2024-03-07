@@ -1,6 +1,6 @@
 import type { Record } from "@/lib/features/records"
 
-export type FilterTerm = 'all' | 'completed' | 'current'
+export type FilterTerm = 'all' | 'completed' | 'current' | 'index'
 
 export const filteredRecords = (term: FilterTerm, records: Record[]): Record[] => {
   return term === 'all' ?
