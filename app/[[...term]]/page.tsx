@@ -8,9 +8,9 @@ import { Note } from '../components/Note/Note'
 
 export default function FilterPage({params}: {params: {term?: FilterTerm[]}}): React.ReactNode {
   const records = useAppSelector(selectRecords)
-  const term = params?.term ? params.term[0] : 'all'
+  const term = params.term ? params.term[0] : 'all'
   const filtered = filteredRecords(term, records)
-  console.log(term)
+  console.log(params)
 
   return (
     <div className={styles.records_container}>
