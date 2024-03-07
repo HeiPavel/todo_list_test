@@ -2,9 +2,11 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "../store"
 
 const initialState: InitialState = {
-  records: [], 
-  completedRecords: 0,
-  uncompletedRecords: 0
+  records: [],
+  stats: {
+    completed: 0,
+    uncompleted: 0
+  } 
 }
 
 export const recordsSlice = createSlice({
@@ -16,33 +18,28 @@ export const recordsSlice = createSlice({
         ...action.payload,
         isComplete: false
       })
-      state.uncompletedRecords++
+      state.stats.uncompleted++
     },
     changeStatus: (state, action: PayloadAction<string>) => {
       const record = state.records.find(rec => rec.id === action.payload)
       if (record?.isComplete !== undefined) record.isComplete = !record.isComplete
       if (record?.isComplete) {
-        state.completedRecords++
-        state.uncompletedRecords--
+        state.stats.completed++
+        state.stats.uncompleted--
       } else {
-        state.completedRecords--
-        state.uncompletedRecords++
+        state.stats.completed--
+        state.stats.uncompleted++
       }
     },
     removeRecord: (state, action: PayloadAction<string>) => {
       const index = state.records.findIndex(rec => rec.id === action.payload)
-      state.records[index].isComplete ? state.completedRecords-- : state.uncompletedRecords--
+      state.records[index].isComplete ? state.stats.completed-- : state.stats.uncompleted--
       state.records.splice(index, 1)
     }
   } 
 })
 
-export const selectStats = (state: RootState): StatsType => {
-  return {
-    completed: state.records.completedRecords,
-    uncompleted: state.records.uncompletedRecords
-  }
-}
+export const selectStats = (state: RootState): StatsType => state.records.stats
 export const selectRecords = (state: RootState): Record[] => state.records.records
 export const {addRecord, changeStatus, removeRecord} = recordsSlice.actions
 export default recordsSlice.reducer
@@ -60,8 +57,7 @@ export type AddRecordPayloadType = {
 
 export type InitialState = {
   records: Record[]
-  completedRecords: number
-  uncompletedRecords: number
+  stats: StatsType
 }
 
 export type StatsType = {
