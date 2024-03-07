@@ -15,5 +15,14 @@
   }
   .active {
     text-decoration: underline;
+    font-weight: 700;
+  }
+}
+
+@media (hover: hover) {
+  .nav {
+    a:hover {
+      font-weight: 700;
+    }
   }
 }

@@ -5,13 +5,15 @@ import { useAppSelector, useAppDispatch } from "@/lib/hooks"
 import { changeTerm, selectTerm, addRecordAndClearTerm } from "@/lib/features/form"
 import { Stats } from "../Stats/Stats"
 import {v4 as uuidv4} from 'uuid'
+import type { KeyboardEvent, MouseEvent } from "react"
 
 export const RecordForm = (): React.ReactNode => {
   const term = useAppSelector(selectTerm)
   const dispatch = useAppDispatch()
 
-  const handleAdd = (): void => {
-    dispatch(addRecordAndClearTerm({id: uuidv4(), content: term}))
+  const handleAdd = (event: MouseEvent | KeyboardEvent): void => {
+    if (term && (event.type === 'keydown' && (event as KeyboardEvent).key === 'Enter' || event.type === 'click')) 
+      dispatch(addRecordAndClearTerm({id: uuidv4(), content: term}))
   }
 
   return (
@@ -28,6 +30,7 @@ export const RecordForm = (): React.ReactNode => {
             maxLength={20}
             value={term}
             onChange={(event) => dispatch(changeTerm(event.target.value))}
+            onKeyDown={handleAdd}
           />
           <button type="button" onClick={handleAdd}>Add Record</button>
         </div>
