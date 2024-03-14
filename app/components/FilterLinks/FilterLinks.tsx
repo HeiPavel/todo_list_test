@@ -10,11 +10,11 @@ export const FilterLinks = (): React.ReactNode => {
 
   return (
     <nav className={styles.nav}>
-      {['', 'completed', 'current'].map((term, index) => 
+      {['all', 'completed', 'current'].map((term, index) => 
         <Link
           key={index}
           href={`/${term}`}
-          className={path === term ? styles.active : ''}
+          className={path === term || term === 'all' && !path ? styles.active : ''}
         >
           {term ? term : 'all'}
         </Link>)}
