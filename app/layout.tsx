@@ -4,6 +4,7 @@ import Provider from "./StoreProvider"
 import { Header } from "./components/Header/Header"
 import { RecordForm } from "./components/RecordForm/RecordForm"
 import { FilterLinks } from "./components/FilterLinks/FilterLinks"
+import { Footer } from "./components/Footer/Footer"
 import "./styles/globals.css"
 
 const roboto = Roboto({ 
@@ -41,6 +42,7 @@ export default function RootLayout({
             {children}
           </Provider>
         </main>
+        <Footer/>
       </body>
     </html>
   )
